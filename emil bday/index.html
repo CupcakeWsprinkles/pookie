@@ -2,46 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAPPY BDAY EMIL</title>
-  <!-- Bubbly Font von Google Fonts -->
-  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
       margin: 0;
       padding: 15px;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Fredoka', cursive, sans-serif;
-      
-      
-      background-color: #ffb6c1; /* Fallback-Farbe, falls das GIF noch lädt */
+      background-color: #ffb6c1;
     }
-
-    /* Retro Computer Window Design */
+    #app { width: 100%; display: flex; justify-content: center; }
     .window {
+      width: 100%;
+      max-width: 420px;
       background-color: #ece9d8;
       border: 3px solid #0054e3;
       border-radius: 8px 8px 4px 4px;
-      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
-      width: 100%;
-      max-width: 420px;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.4);
       overflow: hidden;
       animation: popIn 0.2s ease-out;
     }
-
     @keyframes popIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
-
     .title-bar {
       background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #06f 88%, #06f 93%, #005bff 95%, #003dd7 96%, #003dd7 100%);
       color: white;
@@ -54,12 +47,7 @@
       letter-spacing: 0.5px;
       user-select: none;
     }
-
-    .window-controls {
-      display: flex;
-      gap: 4px;
-    }
-
+    .window-controls { display: flex; gap: 4px; }
     .control-btn {
       width: 18px;
       height: 18px;
@@ -69,290 +57,174 @@
       border-right-color: #404040;
       border-bottom-color: #404040;
       border-radius: 3px;
-      font-size: 11px;
+      font: 11px sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: sans-serif;
     }
-
-    .control-btn.close {
-      background: #e04343;
-      color: white;
-    }
-
-    .window-body {
-      padding: 24px 20px;
-      text-align: center;
-      color: #222;
-    }
-
-    .message {
-      font-size: 22px;
-      line-height: 1.35;
-      margin-bottom: 24px;
-      word-wrap: break-word;
-    }
-
-    .message.final-text {
-      font-size: 18px;
-      text-align: left;
-      line-height: 1.5;
-    }
-
-    /* Button Container & Umrahmte Kästen */
-    .options {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
+    .control-btn.close { background: #e04343; color: white; }
+    .window-body { padding: 24px 20px; text-align: center; color: #222; }
+    .message { font-size: 22px; line-height: 1.35; margin: 0 0 24px; overflow-wrap: anywhere; }
+    .message.final-text { font-size: 18px; text-align: left; line-height: 1.5; }
+    .options { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .btn {
       font-family: 'Fredoka', cursive, sans-serif;
       font-size: 16px;
       font-weight: 500;
       padding: 10px 16px;
-      background-color: #ffffff;
+      background: #fff;
       color: #000;
       border: 2px solid #000;
       border-radius: 6px;
-      box-shadow: 3px 3px 0px #000;
+      box-shadow: 3px 3px 0 #000;
       cursor: pointer;
-      transition: transform 0.1s, box-shadow 0.1s;
       touch-action: manipulation;
     }
-
-    .btn:active:not(.disabled) {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px #000;
-    }
-
-    /* Nicht anklickbare Buttons */
-    .btn.disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      background-color: #d3d3d3;
-      box-shadow: 1px 1px 0px #666;
-    }
-
-    /* Spezial-Layout für das GIF in Weg 1,21 */
-    .gif-stage {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      max-width: 95vw;
-      animation: popIn 0.25s ease-out;
-    }
-
-    .gif-stage img {
-      max-width: 70vw;
-      max-height: 70vh;
-      border: 4px solid #fff;
-      border-radius: 10px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    }
+    .btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; background: #d3d3d3; }
+    .gif-stage { display: flex; align-items: center; justify-content: center; gap: 15px; max-width: 95vw; }
+    .gif-stage img { max-width: 70vw; max-height: 70vh; border: 4px solid #fff; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,.5); }
+    @media (max-width: 360px) { .window-body { padding: 20px 14px; } .message { font-size: 20px; } }
   </style>
 </head>
 <body>
-
-  <div id="app"></div>
-
+  <main id="app" aria-live="polite"></main>
   <script>
-    // Merkt sich, ob Emil schon einmal auf "AAAAAA" geklickt hat
     let disableAaaaaa = false;
 
-    // Alle Verzweigungen und Texte
     const story = {
-      start: {
-        title: "bday.exe",
-        text: "HAPPY BDAY EMIL",
-        options: [
-          { label: "WOAH hi.", next: "step2" }
-        ]
-      },
-      step2: {
-        title: "msg.exe",
-        text: "sup.",
-        options: [
-          { label: "Are u excited about ur bday?", next: "step3" }
-        ]
-      },
-      step3: {
-        title: "question_1.exe",
-        text: "Are u excited about ur bday?",
-        options: [
-          { label: "YESYES", next: "step4" },
-          { label: "no", disabled: true }
-        ]
-      },
-      step4: {
-        title: "height_check.exe",
-        text: "Are u excited to finally grow a cm?",
-        options: [
-          { label: "yes im one cm Closer to reaching ur height (impossible)", next: "step5" },
-          { label: "im taller", disabled: true }
-        ]
-      },
-      step5: {
-        title: "age_check.exe",
-        text: "Happy abt turning from pre-fetus to newborn?",
-        options: [
-          { label: "yep im just a bebeh i", next: "r_1_1" },
-          { label: "LET ME DECIDE OML", next: "r_1_2" }
-        ]
-      },
-
-      // --- ZWEIG 1,1 ---
-      r_1_1: {
-        title: "cute.exe",
-        text: "Gah right so cute.",
-        options: [
-          { label: "right.", next: "r_1_11" },
-          { label: "tight.", next: "r_1_12" }
-        ]
-      },
-
-      // --- ZWEIG 1,11 (Schere Stein Papier) ---
-      r_1_11: {
-        title: "rps_game.exe",
-        text: "lets Play rock paper or scissors. Ready?",
-        options: [
-          { label: "ROCK", next: "r_1_111" },
-          { label: "PAPER", next: "r_1_111" },
-          { label: "or ahhah", next: "r_1_112" },
-          { label: "SCISSORS", next: "r_1_111" }
-        ]
-      },
-      r_1_111: {
-        title: "gameover.exe",
-        text: "U lost!!!!hahahahcoughcoUGHGZG",
-        options: [
-          { label: "bad ending: i choked. redo.", next: "r_1_11" }
-        ]
-      },
-      r_1_112: {
-        title: "winner.exe",
-        text: "U won!!!! go to the end of the link.",
-        options: [
-          { label: "goes", next: "r_2_0" },
-          { label: "fights u???", next: "r_1_1121" }
-        ]
-      },
-      r_1_1121: {
-        title: "pay2win.exe",
-        text: "u lost the fight. redo or spend 55 gems??",
-        options: [
-          { label: "redoes", next: "r_1_112" },
-          { label: "spend (too poor sry xx)", disabled: true }
-        ]
-      },
-
-      // --- ZWEIG 1,12 (Typo) ---
-      r_1_12: {
-        title: "typo_alert.exe",
-        text: "BYE DONT CHOOSE THE TYPO???",
-        options: [
-          { label: "THEN DONT MAKE IT AN OPTION", next: "r_1_2" },
-          { label: "im tight tho i", next: "r_1_122" }
-        ]
-      },
-      r_1_122: {
-        title: "apology.exe",
-        text: "oh oh my god no im so sorry yeah no i completely understand.",
-        options: [
-          { label: "tanks", next: "r_1_122_b" }
-        ]
-      },
-      r_1_122_b: {
-        title: "anyway.exe",
-        text: "anyway i",
-        options: [
-          { label: "bring me to the end of this link", next: "r_2_0" }
-        ]
-      },
-
-      // --- ZWEIG 1,2 ---
-      r_1_2: {
-        title: "WARNING.exe",
-        text: "LEAVE ME ALONE THIS IS MY WEBSITE",
-        getOptions: () => [
-          { label: "NO THIS SUCKS", next: "r_1_21" },
-          { label: "AAAAAA", next: "r_1_22", disabled: disableAaaaaa }
-        ]
-      },
-      r_1_21: {
-        title: "proof.exe",
-        text: "NO IT DOESNT watch this",
-        options: [
-          { label: "??", next: "r_1_21_gif" }
-        ]
-      },
-      r_1_21_gif: {
-        isGifScreen: true,
-        // HIER DEIN ZWEITES GIF EINFÜGEN (Dateiname anpassen)
-        gifSrc: "explosion-cat.gif",
-        buttonLabel: "?!?!",
-        next: "r_2_0"
-      },
-      r_1_22: {
-        title: "shhh.exe",
-        text: "STOP SCREAMING go back to the other option.",
-        options: [
-          {
-            label: "ok sorry.",
-            action: () => {
-              disableAaaaaa = true;
-              render("r_1_2");
-            }
-          }
-        ]
-      },
-
-      // --- ENDE 2,0 ---
+      start: { title: 'bday.exe', text: 'HAPPY BDAY EMIL', options: [
+        { label: 'WOAH hi.', next: 'step2' }
+      ] },
+      step2: { title: 'msg.exe', text: 'sup.', options: [
+        { label: 'Are u excited about ur bday?', next: 'step3' }
+      ] },
+      step3: { title: 'question_1.exe', text: 'Are u excited about ur bday?', options: [
+        { label: 'YESYES', next: 'step4' }, { label: 'no', disabled: true }
+      ] },
+      step4: { title: 'height_check.exe', text: 'Are u excited to finally grow a cm?', options: [
+        { label: 'yes im one cm Closer to reaching ur height (impossible)', next: 'step5' },
+        { label: 'im taller', disabled: true }
+      ] },
+      step5: { title: 'age_check.exe', text: 'Happy abt turning from pre-fetus to newborn?', options: [
+        { label: 'yep im just a bebeh i', next: 'r_1_1' },
+        { label: 'LET ME DECIDE OML', next: 'r_1_2' }
+      ] },
+      r_1_1: { title: 'cute.exe', text: 'Gah right so cute.', options: [
+        { label: 'right.', next: 'r_1_11' }, { label: 'tight.', next: 'r_1_12' }
+      ] },
+      r_1_11: { title: 'rps_game.exe', text: 'lets Play rock paper or scissors. Ready?', options: [
+        { label: 'ROCK', next: 'r_1_111' }, { label: 'PAPER', next: 'r_1_111' },
+        { label: 'or ahhah', next: 'r_1_112' }, { label: 'SCISSORS', next: 'r_1_111' }
+      ] },
+      r_1_111: { title: 'gameover.exe', text: 'U lost!!!!hahahahcoughcoUGHGZG', options: [
+        { label: 'bad ending: i choked. redo.', next: 'r_1_11' }
+      ] },
+      r_1_112: { title: 'winner.exe', text: 'U won!!!! go to the end of the link.', options: [
+        { label: 'goes', next: 'r_2_0' }, { label: 'fights u???', next: 'r_1_1121' }
+      ] },
+      r_1_1121: { title: 'pay2win.exe', text: 'u lost the fight. redo or spend 55 gems??', options: [
+        { label: 'redoes', next: 'r_1_112' }, { label: 'spend (too poor sry xx)', disabled: true }
+      ] },
+      r_1_12: { title: 'typo_alert.exe', text: 'BYE DONT CHOOSE THE TYPO???', options: [
+        { label: 'THEN DONT MAKE IT AN OPTION', next: 'r_1_2' },
+        { label: 'im tight tho i', next: 'r_1_122' }
+      ] },
+      r_1_122: { title: 'apology.exe', text: 'oh oh my god no im so sorry yeah no i completely understand.', options: [
+        { label: 'tanks', next: 'r_1_122_b' }
+      ] },
+      r_1_122_b: { title: 'anyway.exe', text: 'anyway i', options: [
+        { label: 'bring me to the end of this link', next: 'r_2_0' }
+      ] },
+      r_1_2: { title: 'WARNING.exe', text: 'LEAVE ME ALONE THIS IS MY WEBSITE', getOptions: () => [
+        { label: 'NO THIS SUCKS', next: 'r_1_21' },
+        { label: 'AAAAAA', next: 'r_1_22', disabled: disableAaaaaa }
+      ] },
+      r_1_21: { title: 'proof.exe', text: 'NO IT DOESNT watch this', options: [
+        { label: '??', next: 'r_1_21_gif' }
+      ] },
+      r_1_21_gif: { isGifScreen: true, gifSrc: 'explosion-cat.gif', buttonLabel: '?!?!', next: 'r_2_0' },
+      r_1_22: { title: 'shhh.exe', text: 'STOP SCREAMING go back to the other option.', options: [
+        { label: 'ok sorry.', action: () => { disableAaaaaa = true; render('r_1_2'); } }
+      ] },
       r_2_0: {
-        title: "happy_bday_emil.txt",
+        title: 'happy_bday_emil.txt',
         isFinal: true,
-        text: "deer Emil, i wish u a great super duper birthday. youre so awesome and kind and funni and aura and stuff and im realli happi that we know each other. today is ur special day and i hope u celebrate it well !!!! i wish i could give u an actual gift not a digital thing i coded :sob: but i hope u like this too ! you is kind you is important and sososoosososososo cool. insert bears hugging and like biting each other sticker."
+        text: 'deer Emil, i wish u a great super duper birthday. youre so awesome and kind and funni and aura and stuff and im realli happi that we know each other. today is ur special day and i hope u celebrate it well !!!! i wish i could give u an actual gift not a digital thing i coded :sob: but i hope u like this too ! you is kind you is important and sososoosososososo cool. insert bears hugging and like biting each other sticker.',
+        options: []
       }
     };
 
-    const app = document.getElementById("app");
+    const app = document.getElementById('app');
 
     function render(nodeKey) {
       const node = story[nodeKey];
-      app.innerHTML = "";
+      if (!node) {
+        app.textContent = 'Sorry, this scene could not be loaded.';
+        return;
+      }
+      app.replaceChildren();
 
-      // Spezialansicht für das GIF in Weg 1,21
       if (node.isGifScreen) {
-        const container = document.createElement("div");
-        container.className = "gif-stage";
-
-        const img = document.createElement("img");
+        const stage = document.createElement('div');
+        stage.className = 'gif-stage';
+        const img = document.createElement('img');
         img.src = node.gifSrc;
-        img.alt = "Surprise GIF";
-
-        const btn = document.createElement("button");
-        btn.className = "btn";
-        btn.textContent = node.buttonLabel;
-        btn.onclick = () => render(node.next);
-
-        container.appendChild(img);
-        container.appendChild(btn);
-        app.appendChild(container);
+        img.alt = 'Surprise GIF';
+        const button = document.createElement('button');
+        button.className = 'btn';
+        button.textContent = node.buttonLabel;
+        button.addEventListener('click', () => render(node.next));
+        stage.append(img, button);
+        app.append(stage);
         return;
       }
 
-      // Standard Computer-Fenster
-      const win = document.createElement("div");
-      win.className = "window";
+      const win = document.createElement('section');
+      win.className = 'window';
+      const titleBar = document.createElement('header');
+      titleBar.className = 'title-bar';
+      const title = document.createElement('span');
+      title.textContent = node.title || 'window.exe';
+      const controls = document.createElement('div');
+      controls.className = 'window-controls';
+      for (const [label, extraClass] of [['_', ''], ['□', ''], ['×', 'close']]) {
+        const control = document.createElement('span');
+        control.className = `control-btn ${extraClass}`.trim();
+        control.textContent = label;
+        controls.append(control);
+      }
+      titleBar.append(title, controls);
 
-      // Titelleiste oben
-      const titleBar = document.createElement("div");
-      titleBar.className = "title-bar";
-      titleBar.innerHTML = `
-        <span>${node.title || "window.exe"}</span>
-        <div class="window-controls">
-          <div class="control-btn">_</div>
-          <div class="control-btn">□</div>
+      const body = document.createElement('div');
+      body.className = 'window-body';
+      const message = document.createElement('p');
+      message.className = node.isFinal ? 'message final-text' : 'message';
+      message.textContent = node.text;
+      body.append(message);
+
+      const options = typeof node.getOptions === 'function' ? node.getOptions() : node.options;
+      if (options && options.length) {
+        const optionList = document.createElement('div');
+        optionList.className = 'options';
+        for (const option of options) {
+          const button = document.createElement('button');
+          button.className = 'btn';
+          button.textContent = option.label;
+          button.disabled = Boolean(option.disabled);
+          if (!button.disabled) {
+            button.addEventListener('click', option.action || (() => render(option.next)));
+          }
+          optionList.append(button);
+        }
+        body.append(optionList);
+      }
+
+      win.append(titleBar, body);
+      app.append(win);
+    }
+
+    render('start');
+  </script>
+</body>
+</html>
